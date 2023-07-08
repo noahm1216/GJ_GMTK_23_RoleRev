@@ -5,28 +5,24 @@ using UnityEngine.UI;
 
 public class CardGenerator : MonoBehaviour
 {
-    public enum TrackType { SouthWest, NorthWest, North, NorthEast, SouthEast };
+    public enum TrackTurnType { SouthWest, NorthWest, North, NorthEast, SouthEast };
 
     public GameObject cardPrefab;
 
     //3 Card Locations for them to be organized by
-    private Vector3[] cardLocations = { new Vector3(-180, 0, 1), new Vector3(0, 0, 1), new Vector3(180, 0, 1) };
+    private Vector3[] cardLocations = { new Vector3(-300, 0, 1), new Vector3(-150, 0, 1), new Vector3(0, 0, 1), new Vector3(150, 0, 1), new Vector3(300, 0, 1) };
 
-    //Random Container for card descriptions
-    private string[] cardDescriptions = { "Description 1", "Description 2", "Description 3" };
+    //Container for Dealt Cards for reference
+    private List<GameObject> dealtCards = new List<GameObject>();
 
-    //Random Container for card titles
-    private string[] cardTitles = { "Title 1", "Title 2", "Title 3" };
+    public int cardsPlayed = 3;
+    public int cardsDiscarded = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform) as GameObject;
-        //RectTransform rt = newCard.GetComponent<RectTransform>();
-        //rt.anchoredPosition = cardLocations[0];
-        //Card cardref = newCard.GetComponent<Card>();
-        //cardref.SetTrackDescription("Test description");
-        //cardref.SetTrackType(Card.TrackType.SouthWest);
+        //start with three played cards to enable first hand draw
+        cardsPlayed = 3;
     }
 
     // Update is called once per frame
@@ -37,16 +33,34 @@ public class CardGenerator : MonoBehaviour
 
     public void DealCards()
     {
-        for(int i = 0; i < 3; i++)
+        if (cardsPlayed < 3)
         {
-            Debug.Log("Dealing card: " + i);
-            GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform) as GameObject;
-            RectTransform rt = newCard.GetComponent<RectTransform>();
-            rt.anchoredPosition = cardLocations[i];
-            Card cardref = newCard.GetComponent<Card>();
-            cardref.RandomlyDecideTrackType();
-            cardref.SetTrackDescription(cardDescriptions[Random.Range(0, 3)]);
-            cardref.SetTrackTitle(cardTitles[Random.Range(0, 3)]);
+            Debug.Log("You need to play 3 cards before you can be dealt a new hand!");
+        }
+        else
+        {
+            if (dealtCards.Count != 0)
+            {
+                foreach (GameObject g in dealtCards)
+                {
+                    Destroy(g);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.Log("Dealing card: " + i);
+                GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform) as GameObject;
+                dealtCards.Add(newCard);
+                RectTransform rt = newCard.GetComponent<RectTransform>();
+                rt.anchoredPosition = cardLocations[i];
+                Card cardref = newCard.GetComponent<Card>();
+                cardref.RandomlyDecideTrackTurnAngle();
+                cardref.SetTrackType();
+                cardref.SetTrackTerrain();
+                cardref.SetTrackSpecial();
+            }
+            cardsPlayed = 0;
+            cardsDiscarded = 0;
         }
     }
 }

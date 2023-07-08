@@ -5,11 +5,19 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    public enum TrackType { SouthWest, NorthWest, North, NorthEast, SouthEast};
-    [SerializeField] TrackType cardTrackType;
+    public enum TrackTurnAngle { HairpinLeft, SlightLeft, Straight, SlightRight, HairpinRight };
+    [SerializeField] TrackTurnAngle cardTrackType;
+    public enum TrackType { Speed, Handling, OffRoad };
+    [SerializeField] TrackType trackType;
+    public enum TrackTerrain { Track, Dirt };
+    [SerializeField] TrackTerrain trackTerrain;
+    public enum TrackSpecial { none };
+    [SerializeField] TrackSpecial trackSpecial;
 
-    public Text text_cardDescription;
     public Text text_cardTitle;
+    public Text text_BestForText;
+    public Text text_TypeText;
+    public Text text_SpecialText;
     public Image trackImage;
     public string cardTitle;
     public string cardDescription;
@@ -26,7 +34,7 @@ public class Card : MonoBehaviour
         
     }
 
-    public void SetTrackType(TrackType givenTrackType)
+    public void SetTrackType(TrackTurnAngle givenTrackType)
     {
         cardTrackType = givenTrackType;
     }
@@ -36,10 +44,22 @@ public class Card : MonoBehaviour
         trackImage = givenTrackImage;
     }
 
-    public void SetTrackDescription(string givenDescription)
+    public void SetTrackType()
     {
-        cardDescription = givenDescription;
-        text_cardDescription.text = cardDescription;
+        trackType = (TrackType)Random.Range(0, 3);
+        text_BestForText.text = trackType.ToString();
+    }
+
+    public void SetTrackTerrain()
+    {
+        trackTerrain = (TrackTerrain)Random.Range(0, 2);
+        text_TypeText.text = trackTerrain.ToString();
+    }
+
+    public void SetTrackSpecial()
+    {
+        trackSpecial = TrackSpecial.none;
+        text_SpecialText.text = trackSpecial.ToString();
     }
 
     public void SetTrackTitle(string givenTitle)
@@ -48,8 +68,9 @@ public class Card : MonoBehaviour
         text_cardTitle.text = cardTitle;
     }
 
-    public void RandomlyDecideTrackType()
+    public void RandomlyDecideTrackTurnAngle()
     {
-        cardTrackType = (TrackType)Random.Range(0, 4);
+        cardTrackType = (TrackTurnAngle)Random.Range(0, 5);
+        SetTrackTitle(cardTrackType.ToString());
     }
 }

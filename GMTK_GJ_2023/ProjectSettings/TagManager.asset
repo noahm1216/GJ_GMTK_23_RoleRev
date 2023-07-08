@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Card Title
+  - Card Generator
   layers:
   - Default
   - TransparentFX
