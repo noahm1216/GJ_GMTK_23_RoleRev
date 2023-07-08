@@ -41,7 +41,6 @@ public class RaceViewingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //cycles through different cameras on space
         if (Input.GetKeyDown(KeyCode.Space))
         {
