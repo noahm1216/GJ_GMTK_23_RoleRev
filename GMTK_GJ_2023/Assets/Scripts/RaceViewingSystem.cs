@@ -7,6 +7,8 @@ public class RaceViewingSystem : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera _vcamDriverPov;
     [SerializeField] CinemachineVirtualCamera _vcamThirdPerson;
+    [SerializeField] CinemachineVirtualCamera _vcamReverseThirdPerson;
+
 
     private void OnEnable()
     {
@@ -26,13 +28,17 @@ public class RaceViewingSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (ViewingCameraSwitcher.IsActiveCamera(_vcamThirdPerson))
+            if (ViewingCameraSwitcher.IsActiveCamera(_vcamReverseThirdPerson))
             {
                 ViewingCameraSwitcher.SwitchCamera(_vcamDriverPov);
             }
             else if (ViewingCameraSwitcher.IsActiveCamera(_vcamDriverPov))
             {
                 ViewingCameraSwitcher.SwitchCamera(_vcamThirdPerson);
+            }
+            else if (ViewingCameraSwitcher.IsActiveCamera(_vcamThirdPerson))
+            {
+                ViewingCameraSwitcher.SwitchCamera(_vcamReverseThirdPerson);
             }
         }
     }
