@@ -10,6 +10,10 @@ public class PlaceTileOnGrid : MonoBehaviour
     public Transform myRotatingParent;
     public float rotateSpeed = 10;
 
+    public GameObject gabrielsCardObjs;
+    public Transform stationaryParent;
+    public GameObject racerButton;
+    public int tilesPlaced = 0;
 
     // Update is called once per frame
     void Update()
@@ -37,9 +41,9 @@ public class PlaceTileOnGrid : MonoBehaviour
         }//end of can rotate
         else
         {
-            if (Input.GetMouseButtonDown(0) && myTileToPlace != null)//if we click and have a tile
+            if (Input.GetMouseButtonDown(0) && myTileToPlace != null )//if we click and have a tile
             {
-                print("clicking 0");
+                //print("clicking 0");
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 1000.0f))
@@ -53,6 +57,7 @@ public class PlaceTileOnGrid : MonoBehaviour
                         //place the tile
                         PlaceTileHere(hit.transform);
                         hit.transform.tag = "OccupiedTile";
+                        canRotate = true;
                     }
 
                 }
@@ -94,7 +99,24 @@ public class PlaceTileOnGrid : MonoBehaviour
     public void PlaceConfirm()
     {
         print("Tile Place");
+        tilesPlaced++;
+        myTileToPlace.transform.SetParent(stationaryParent);
         //places the tile and moves onto the next
+        myTileToPlace = null;
+        canRotate = false;
+        gabrielsCardObjs.SetActive(true);
+
+        if (tilesPlaced >= 2)
+            racerButton.SetActive(true);
     }
+
+    public void ReplaceMyTile(GameObject _newTile)
+    {
+        myTileToPlace = _newTile;
+        myTileToPlace.transform.SetParent(transform.parent);
+        gabrielsCardObjs.SetActive(false);
+    }
+
+
 
 }//end of place tile on grid script

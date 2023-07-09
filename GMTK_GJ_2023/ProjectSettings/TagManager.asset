@@ -13,6 +13,7 @@ TagManager:
   - FreeTile
   - OccupiedTile
   - Track Tiles Manager
+  - _newTile
   layers:
   - Default
   - TransparentFX

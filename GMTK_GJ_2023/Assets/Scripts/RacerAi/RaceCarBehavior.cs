@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class RaceCarBehavior : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent myAiAgent;
+    public NavMeshAgent myAiAgent;
     public Transform myNavTargetTrans;
     private float startSpeed, startAngular, startAccel;
 
@@ -14,6 +14,11 @@ public class RaceCarBehavior : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+    {
+        SetVars();
+    }
+
+    public void SetVars()
     {
         //set vars
         startSpeed = myAiAgent.speed; startAngular = myAiAgent.angularSpeed; startAccel = myAiAgent.acceleration;
