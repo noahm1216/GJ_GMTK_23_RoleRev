@@ -31,6 +31,7 @@ public class ClickMonitoring : MonoBehaviour, IPointerClickHandler
         {
             Debug.Log("Left click - Card Played");
             cardSFXManager.PlayCardSelectSFX();
+            gameObject.transform.parent.gameObject.GetComponent<Card>().TurnCardIntoAsset();
             Destroy(gameObject.transform.parent.gameObject);
             cardGenerator.cardsPlayed++;
         }

@@ -26,9 +26,12 @@ public class Card : MonoBehaviour
     public string cardTitle;
     public string cardDescription;
 
+    public TrackTilesManager trackTilesManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        trackTilesManager = GameObject.FindGameObjectWithTag("Track Tiles Manager").GetComponent<TrackTilesManager>();
         trackImage = GetComponentInChildren<Image>().sprite;
     }
 
@@ -85,7 +88,7 @@ public class Card : MonoBehaviour
 
     public void SetTrackTitle(string givenTitle)
     {
-        if (givenTitle == "Straight") cardTitle = "Straight";
+        if      (givenTitle == "Straight") cardTitle = "Straight";
         else if (givenTitle == "Straight2") cardTitle = "Straight 2";
         else if (givenTitle == "Straight3") cardTitle = "Straight 3";
         else if (givenTitle == "Straight4") cardTitle = "Straight 4";
@@ -109,5 +112,11 @@ public class Card : MonoBehaviour
     {
         cardTrackType = (TrackTurnAngle)Random.Range(0, 16);
         SetTrackTitle(cardTrackType.ToString());
+    }
+
+    public void TurnCardIntoAsset()
+    {
+        Debug.Log("Turning card into asset...");
+        trackTilesManager.CreateTile(cardTrackType.ToString(), trackTerrain.ToString());
     }
 }
