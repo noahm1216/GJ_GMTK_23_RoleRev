@@ -12,6 +12,7 @@ TagManager:
   - Card SFX Manager
   - FreeTile
   - OccupiedTile
+  - Track Tiles Manager
   layers:
   - Default
   - TransparentFX

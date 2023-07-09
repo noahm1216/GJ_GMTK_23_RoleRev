@@ -1124,14 +1124,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   straight_track_tile: {fileID: 3598699004137541431, guid: 5d7c44470239d314bba9eff1ab43b468, type: 3}
   straight_dirt_tile: {fileID: 3598699004137541431, guid: 5d7c44470239d314bba9eff1ab43b468, type: 3}
+  straight2_track_tile: {fileID: 3598699004137541431, guid: ed5743d9763fdb74f9c7be765e5dc71c, type: 3}
+  straight2_dirt_tile: {fileID: 3598699004137541431, guid: ed5743d9763fdb74f9c7be765e5dc71c, type: 3}
+  straight3_track_tile: {fileID: 3598699004137541431, guid: 84c8469fea8832842a1f29e433925fce, type: 3}
+  straight3_dirt_tile: {fileID: 3598699004137541431, guid: 84c8469fea8832842a1f29e433925fce, type: 3}
+  straight4_track_tile: {fileID: 3598699004137541431, guid: f885e3e683ddb8640b94d3c65166fbb7, type: 3}
+  straight4_dirt_tile: {fileID: 3598699004137541431, guid: f885e3e683ddb8640b94d3c65166fbb7, type: 3}
   hairpinleft_track_tile: {fileID: 3950930734177482100, guid: a2e3983c83ea7ab4c9d5e8c61fb35c83, type: 3}
   hairpinleft_dirt_tile: {fileID: 3950930734177482100, guid: a2e3983c83ea7ab4c9d5e8c61fb35c83, type: 3}
   hairpinright_track_tile: {fileID: 7615438977007335940, guid: e09c741fc7f8b884e8a892909205ee0b, type: 3}
   hairpinright_dirt_tile: {fileID: 7615438977007335940, guid: e09c741fc7f8b884e8a892909205ee0b, type: 3}
-  slightleft_track_tile: {fileID: 2688146735945085679, guid: a05af31ee7f94604ea3df3e6e0d3f7ab, type: 3}
-  slightleft_dirt_tile: {fileID: 2688146735945085679, guid: a05af31ee7f94604ea3df3e6e0d3f7ab, type: 3}
+  slightleft_track_tile: {fileID: 2688146735945085679, guid: 7b055e7723e4d1e44b622a83209a2388, type: 3}
+  slightleft_dirt_tile: {fileID: 2688146735945085679, guid: 7b055e7723e4d1e44b622a83209a2388, type: 3}
   slightright_track_tile: {fileID: 3137998889393534596, guid: da85ad4726c18484c85dcc4662baebd2, type: 3}
   slightright_dirt_tile: {fileID: 3137998889393534596, guid: da85ad4726c18484c85dcc4662baebd2, type: 3}
+  tightsidewinderLR_track_tile: {fileID: 3950930734177482100, guid: 8300b988ee974094e865f35b70e9ba86, type: 3}
+  tightsidewinderLR_dirt_tile: {fileID: 3950930734177482100, guid: 8300b988ee974094e865f35b70e9ba86, type: 3}
+  tightsidewinderRL_track_tile: {fileID: 7615438977007335940, guid: a120b94532231cd47817ea874d72e7ac, type: 3}
+  tightsidewinderRL_dirt_tile: {fileID: 7615438977007335940, guid: a120b94532231cd47817ea874d72e7ac, type: 3}
+  loosesidewinderLR_track_tile: {fileID: 2688146735945085679, guid: a05af31ee7f94604ea3df3e6e0d3f7ab, type: 3}
+  loosesidewinderLR_dirt_tile: {fileID: 2688146735945085679, guid: a05af31ee7f94604ea3df3e6e0d3f7ab, type: 3}
+  loosesidewinderRL_track_tile: {fileID: 3137998889393534596, guid: 99916495ee07821458cbfccad693899c, type: 3}
+  loosesidewinderRL_dirt_tile: {fileID: 3137998889393534596, guid: 99916495ee07821458cbfccad693899c, type: 3}
+  gentleleft_track_tile: {fileID: 2688146735945085679, guid: 1df524d598d92094b873161d4c25d319, type: 3}
+  gentleright_track_tile: {fileID: 3137998889393534596, guid: cada06ee2660e2b48809791a34118000, type: 3}
+  gentleleft_dirt_tile: {fileID: 2688146735945085679, guid: 1df524d598d92094b873161d4c25d319, type: 3}
+  gentleright_dirt_tile: {fileID: 3137998889393534596, guid: cada06ee2660e2b48809791a34118000, type: 3}
+  uturnleft_track_tile: {fileID: 2688146735945085679, guid: 6704406d566e2e647a3abccdd2870413, type: 3}
+  uturnright_track_tile: {fileID: 2688146735945085679, guid: 6704406d566e2e647a3abccdd2870413, type: 3}
+  uturnleft_dirt_tile: {fileID: 3137998889393534596, guid: cada06ee2660e2b48809791a34118000, type: 3}
+  uturnright_dirt_tile: {fileID: 3137998889393534596, guid: cada06ee2660e2b48809791a34118000, type: 3}
 --- !u!4 &1714960065
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,7 +1162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714960063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.38, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
