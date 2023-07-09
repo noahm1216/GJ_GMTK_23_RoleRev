@@ -7,12 +7,16 @@ public class ClickMonitoring : MonoBehaviour, IPointerClickHandler
 {
     public GameObject cardGeneratorRef;
     public CardGenerator cardGenerator;
+    public GameObject cardSFXManagerRef;
+    public CardSFXManager cardSFXManager;
 
     // Start is called before the first frame update
     void Start()
     {
         cardGeneratorRef = GameObject.FindGameObjectWithTag("Card Generator");
         cardGenerator = cardGeneratorRef.GetComponent<CardGenerator>();
+        cardSFXManagerRef = GameObject.FindGameObjectWithTag("Card SFX Manager");
+        cardSFXManager = cardSFXManagerRef.GetComponent<CardSFXManager>();
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class ClickMonitoring : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("Left click - Card Played");
+            cardSFXManager.PlayCardSelectSFX();
             Destroy(gameObject.transform.parent.gameObject);
             cardGenerator.cardsPlayed++;
         }
@@ -38,6 +43,7 @@ public class ClickMonitoring : MonoBehaviour, IPointerClickHandler
             else
             {
                 Debug.Log("Right click - Card Discarded");
+                cardSFXManager.PlayCardDiscardSFX();
                 Destroy(gameObject.transform.parent.gameObject);
                 cardGenerator.cardsDiscarded++;
             }

@@ -8,6 +8,8 @@ public class CardGenerator : MonoBehaviour
     public enum TrackTurnType { SouthWest, NorthWest, North, NorthEast, SouthEast };
 
     public GameObject cardPrefab;
+    public GameObject trackImageManager_gameobject;
+    private TrackImageManager trackImageManager;
 
     //3 Card Locations for them to be organized by
     private Vector3[] cardLocations = { new Vector3(-300, 0, 1), new Vector3(-150, 0, 1), new Vector3(0, 0, 1), new Vector3(150, 0, 1), new Vector3(300, 0, 1) };
@@ -21,6 +23,7 @@ public class CardGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        trackImageManager = trackImageManager_gameobject.GetComponent<TrackImageManager>();
         //start with three played cards to enable first hand draw
         cardsPlayed = 3;
     }
@@ -55,9 +58,11 @@ public class CardGenerator : MonoBehaviour
                 rt.anchoredPosition = cardLocations[i];
                 Card cardref = newCard.GetComponent<Card>();
                 cardref.RandomlyDecideTrackTurnAngle();
-                cardref.SetTrackType();
                 cardref.SetTrackTerrain();
-                cardref.SetTrackSpecial();
+                cardref.SetTrackSpecial(); //special is always "none" for now
+                cardref.SetTrackSpecialty();
+                cardref.trackImage = trackImageManager.SetTrackImage(cardref.cardTrackType.ToString(), cardref.trackTerrain.ToString());
+                cardref.SetTrackImage();
             }
             cardsPlayed = 0;
             cardsDiscarded = 0;

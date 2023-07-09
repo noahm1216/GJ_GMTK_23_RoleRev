@@ -8,6 +8,8 @@ TagManager:
   - Card Title
   - Card Generator
   - RoadTrack
+  - Card Icon
+  - Card SFX Manager
   layers:
   - Default
   - TransparentFX
