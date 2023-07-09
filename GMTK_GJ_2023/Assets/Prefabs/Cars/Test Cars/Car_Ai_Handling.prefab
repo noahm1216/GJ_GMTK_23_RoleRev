@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAiAgent: {fileID: 7239086648824014790}
   myNavTargetTrans: {fileID: 0}
-  mySpeed: 0.4
+  mySpeed: 0.5
   myHandling: 1
   myTraction: 0.35
 --- !u!54 &6550703522362532076
