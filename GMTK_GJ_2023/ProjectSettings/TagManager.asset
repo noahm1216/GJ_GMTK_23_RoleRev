@@ -10,6 +10,8 @@ TagManager:
   - RoadTrack
   - Card Icon
   - Card SFX Manager
+  - FreeTile
+  - OccupiedTile
   layers:
   - Default
   - TransparentFX

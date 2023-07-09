@@ -39,29 +39,31 @@ public class HexTileSpawner : MonoBehaviour
     //a function to spawn the grid
     public void SpawnHexGrid()
     {
+        Vector3 gridOffset = new Vector3(0, 0, 0);
+        int totalCount = 0;
 
-
-        for(int iX = 0; iX < hexGridWxL.x; iX++) //loop x tiles
+        for (int iZ = 0; iZ < hexGridWxL.y; iZ++) //loop z tiles
         {
-            for (int iY = 0; iY < hexGridWxL.y; iY++) //loop y tiles
+            for (int iX = 0; iX < hexGridWxL.x; iX++) //loop x tiles
             {
-                Vector3 gridOffset = new Vector3(0, 0, 0); 
-                gridOffset.x = gridStartPosition.x + indieTileWxH.x * iX;
+                gridOffset.x = gridStartPosition.x + (indieTileWxH.x * iX); //right by X amount
                 gridOffset.y = gridStartPosition.y; // since 3d flat, we dont need this
-                gridOffset.z = gridStartPosition.z + indieTileWxH.y * iY; // this should be gridOffset.y (if you want 2D)
+                gridOffset.z = gridStartPosition.z - (indieTileWxH.y * iZ); // this should be gridOffset.y (if you want 2D)
                 //for hex grid checking
-                if (iY % 2 == 0) // Is even,
-                    gridOffset.z -= indieTileWxH.y *2;
+                if (iX % 2 == 1) // Is odd, should offset
+                    gridOffset.z -= (indieTileWxH.y);
 
                 //if we want to center the grid
                 // if (centerTheGrid) { gridOffset.x *= }
 
 
                 GameObject hexGrassClone = Instantiate(hexGrassPieces[0], gridOffset, hexGrassPieces[0].transform.rotation);
+                hexGrassClone.transform.name += "_" + (totalCount).ToString() + "_" + gridOffset.ToString();
                 hexGrassClone.transform.parent = tileParent;
-            }//end of loop Y tiles
+                totalCount++;
+            }//end of loop x tiles
 
-        }//end of loop X tiles
+        }//end of loop z tiles
 
 
     }//end of SpawnHexGrid()
