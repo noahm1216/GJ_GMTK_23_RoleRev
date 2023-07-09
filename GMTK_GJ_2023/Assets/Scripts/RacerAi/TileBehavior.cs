@@ -22,11 +22,7 @@ public class TileBehavior : MonoBehaviour
     public CurveType thisCurveType;
 
     [HideInInspector]
-    public bool isTerrain, isCurved;
-
-    public float speedMultiplier; // the speed effect from driving on this tile
-    private float speedRoadType;
-    private float speedCurveType;
+    public bool isTerrain, isCurved;      
 
 
     // Start is called before the first frame update
@@ -39,9 +35,5 @@ public class TileBehavior : MonoBehaviour
             isCurved = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+
+}//end of TileBehavior script

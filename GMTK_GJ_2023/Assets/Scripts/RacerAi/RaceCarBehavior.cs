@@ -9,7 +9,7 @@ public class RaceCarBehavior : MonoBehaviour
     public Transform myNavTargetTrans;
     private float startSpeed, startAngular, startAccel;
 
-    [Range(0,1)]
+    [Range(0,1)] [Tooltip("higher *Speed* means faster on straight aways || higher *Handling* means more speed on turns || higher *Traction* means more speed on different terrain")]
     public float mySpeed, myHandling, myTraction;
 
     // Start is called before the first frame update
@@ -22,8 +22,9 @@ public class RaceCarBehavior : MonoBehaviour
 
 
     // a function to update current speeds
-    private void UpdateSpeeds(Vector3 _newSpeeds, bool _isTerrain, bool _isCurved)
+    private void UpdateSpeeds(bool _isTerrain, bool _isCurved)
     {
+        print($"Curr Road: Terrain{_isTerrain} - Curved {_isCurved}");
         float multiplyer = 0;
 
         //------------------is terrtain
@@ -39,19 +40,35 @@ public class RaceCarBehavior : MonoBehaviour
         else
             multiplyer = (multiplyer + mySpeed) / 2;
 
-        myAiAgent.speed = _newSpeeds.x;
-        myAiAgent.angularSpeed = _newSpeeds.y;
-        myAiAgent.acceleration = _newSpeeds.z;
+        
+        //multiplyer = 1 + multiplyer;
+
+        myAiAgent.speed = startSpeed * multiplyer;
+        myAiAgent.angularSpeed = startAngular * multiplyer;
+        myAiAgent.acceleration = startAccel * multiplyer;
+
+        
+
     }//end of UpdateSpeeds()
 
     //Enum.GetValues() if we want to check the enum type of the road
 
-    //on col objects
-    public void OnCollisionEnter(Collision col)
+    //on trig objects
+    private void OnTriggerEnter(Collider trig)
     {
-        if (col.transform.tag == "RoadTrack")
-            print("YEEEEEE HAWWWWWW!!!!!!!!");
-    }//end of OnCollisionEnter(col)
+        if (trig.tag == "RoadTrack")
+        {
+            TileBehavior scriptTB;
+
+            if (trig.transform.GetComponent<TileBehavior>() == null)
+                scriptTB = trig.transform.parent.GetComponent<TileBehavior>();
+            else
+                scriptTB = trig.transform.GetComponent<TileBehavior>();
+
+            UpdateSpeeds(scriptTB.isTerrain, scriptTB.isCurved);
+        }
+    }//end of OnTriggerEnter
+   
 
 
 
