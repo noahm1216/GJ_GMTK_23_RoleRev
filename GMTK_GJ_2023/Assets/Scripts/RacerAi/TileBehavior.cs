@@ -8,11 +8,10 @@ public class TileBehavior : MonoBehaviour
     {
         Normal, //if type is not NORMAL then IS terrain
         Dirt,
-        Water,
+        Wet,
     }
     public RoadType thisRoadType;
-    [HideInInspector]
-    public bool isTerrain;
+    
 
     public enum CurveType//-----------------TURN TYPE
     {
@@ -21,8 +20,9 @@ public class TileBehavior : MonoBehaviour
         HardTurn,
     }
     public CurveType thisCurveType;
+
     [HideInInspector]
-    public bool isCurved;
+    public bool isTerrain, isCurved;
 
     public float speedMultiplier; // the speed effect from driving on this tile
     private float speedRoadType;

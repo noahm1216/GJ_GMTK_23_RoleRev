@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisRoadType: 0
   isTerrain: 0
-  thisCurveType: 0
+  thisCurveType: 1
   isCurved: 0
   speedMultiplier: 0
 --- !u!1 &5314234341983581915

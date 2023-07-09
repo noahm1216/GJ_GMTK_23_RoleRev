@@ -269,6 +269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisRoadType: 0
   isTerrain: 0
-  thisCurveType: 0
+  thisCurveType: 2
   isCurved: 0
   speedMultiplier: 0
