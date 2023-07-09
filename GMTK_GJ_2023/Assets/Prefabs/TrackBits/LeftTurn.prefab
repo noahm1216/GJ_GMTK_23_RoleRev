@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1925966497410436973}
   - component: {fileID: 1711725483485704360}
   - component: {fileID: 400687754939987070}
-  m_Layer: 0
+  - component: {fileID: 7830094053314801143}
+  m_Layer: 3
   m_Name: Track
-  m_TagString: Untagged
+  m_TagString: RoadTrack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7830094053314801143
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298344695767262210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2150044562243273127, guid: 4d77aaf9632c2e644b6c9d9f0d5edc93, type: 3}
 --- !u!1 &2688146735945085679
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +115,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7342609053845297451}
-  m_Layer: 0
+  - component: {fileID: 9030653804299980020}
+  - component: {fileID: 335117998045240552}
+  m_Layer: 3
   m_Name: LeftTurn
-  m_TagString: Untagged
+  m_TagString: RoadTrack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,8 +139,56 @@ Transform:
   - {fileID: 6822285034203956744}
   - {fileID: 1925966497410436973}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
+--- !u!114 &9030653804299980020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688146735945085679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.5
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: e072b3b57ee23ae4e9fc741c875364c2, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!114 &335117998045240552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688146735945085679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e020eb276c96346a700c2a186b3005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisRoadType: 0
+  isTerrain: 0
+  thisCurveType: 0
+  isCurved: 0
+  speedMultiplier: 0
 --- !u!1 &4755555205316448191
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +200,7 @@ GameObject:
   - component: {fileID: 6822285034203956744}
   - component: {fileID: 4449629831274808126}
   - component: {fileID: 8516744672424483738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
